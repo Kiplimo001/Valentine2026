@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,21 +19,23 @@
         }
         .container {
             background: white;
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
+            max-width: 350px;
+            width: 90%;
         }
-        h1 { color: #ff4d4d; font-size: 2rem; }
+        h1 { color: #ff4d4d; font-size: 1.8rem; margin: 1.5rem 0; }
         .buttons {
-            margin-top: 2rem;
             display: flex;
             justify-content: center;
             gap: 20px;
+            margin-top: 1rem;
         }
         button {
             padding: 12px 30px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -43,32 +46,39 @@
             background-color: #888;
             color: white;
             position: relative;
+            z-index: 10;
         }
-        .gif_container img { width: 200px; border-radius: 15px; }
+        /* Style for your photo */
+        .img_container img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
         #message { display: none; margin-top: 20px; color: #ff4d4d; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="gif_container">
-           <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueW4xdzR4eXh5eXh5eXh5eXh5eXh5eXh5eXh5eXh5eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KztT2c4u8mYYUiCiEE/giphy.gif" alt="Cute GIF">
+        <div class="img_container">
+            <img src="us.jpg" alt="Our Picture">
         </div>
         <h1>Will you be my Valentine? ❤️</h1>
         <div class="buttons">
             <button id="yesBtn" onclick="celebrate()">Yes!</button>
-            <button id="noBtn" onmouseover="moveButton()">No</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
         <div id="message">
             <h2>Yay! See you tomorrow! 🥰</h2>
-            <p>I'll bring the chocolate (and maybe some Coke).</p>
+            <p>I'll bring the chocolate and a cold Coke.</p>
         </div>
     </div>
 
     <script>
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
-            // Calculate random position within the viewport
+            // Logic to move the button within the screen boundaries
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             
@@ -80,9 +90,9 @@
         function celebrate() {
             document.querySelector('.buttons').style.display = 'none';
             document.querySelector('h1').style.display = 'none';
+            document.querySelector('.img_container').style.display = 'none';
             document.getElementById('message').style.display = 'block';
             
-            // Basic confetti effect alert
             alert("She said YES! 🥳");
         }
     </script>
